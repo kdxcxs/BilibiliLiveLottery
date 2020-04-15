@@ -2,6 +2,8 @@
 
 Bilibili直播弹幕抽奖
 
+![screenshot](screenshot.png)
+
 ## :bookmark_tabs:内容列表
 
 - [背景](#背景)
