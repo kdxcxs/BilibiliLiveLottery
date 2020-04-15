@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="libs/mdui/css/mdui.min.css">
+    <script src="libs/mdui/js/mdui.min.js"></script>
+    <script src="js/live_apis.js"></script>
+    <script src="js/dao.js"></script>
+    <script src="js/utils.js"></script>
+    <title>BiliBili直播弹幕抽奖</title>
+</head>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+<div class="mdui-toolbar mdui-color-theme">
+    <div class="mdui-toolbar-spacer"></div>
+    <span class="mdui-typo-title">BiliBili直播弹幕抽奖</span>
+    <div class="mdui-toolbar-spacer"></div>
+</div>
+<div class="mdui-container">
+    <img src="assets/bilibili.png" width="80%" class="mdui-center mdui-m-a-2 mdui-hidden-md-up">
+    <img src="assets/bilibili.png" width="350px" class="mdui-center mdui-m-a-2 mdui-hidden-sm-down">
+    <div class="mdui-container" id="room-choosing">
+        <div class="mdui-typo-display-2 mdui-text-color-theme mdui-text-center">请输入房间号</div>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">房间号</label>
+            <input class="mdui-textfield-input" type="number" id="roomid-input"/>
+        </div>
+    </div>
+    <div class="mdui-container" id="running-container">
+        <div class="mdui-typo-display-2 mdui-text-color-theme mdui-text-center" id="running-status">开始记录!</div>
+        <div class="mdui-typo-headline mdui-text-center mdui-text-color-theme-accent mdui-m-a-2">已有</div>
+        <div class="mdui-typo-display-2 mdui-text-center mdui-text-color-theme-accent mdui-m-a-2" id="viewers-count">
+            0
+        </div>
+        <div class="mdui-typo-headline mdui-text-center mdui-text-color-theme-accent mdui-m-a-2">位观众参与抽奖</div>
+    </div>
+    <div class="mdui-container" id="lottery-done">
+        <div class="mdui-typo-display-2 mdui-text-color-theme mdui-text-center">开奖啦!</div>
+        <div class="mdui-typo-headline mdui-text-center mdui-text-color-theme-accent mdui-m-a-2" id="lucky-user"></div>
+    </div>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-center mdui-m-a-2"
+            onclick="enterRoom()" id="control-button">点击开始
+    </button>
+</div>
+
+<script>
+    // init
+    var $ = mdui.JQ;
+    $('#running-container').hide();
+    $('#lottery-done').hide();
+</script>
+</body>
+</html>
