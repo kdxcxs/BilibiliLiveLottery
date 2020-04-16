@@ -1,5 +1,7 @@
 # Bilibili Live Lottery
 
+![LICENSE](https://img.shields.io/github/license/kdxcxs/BilibiliLiveLottery)
+
 Bilibili直播弹幕抽奖
 
 ![screenshot](screenshot.png)
@@ -21,18 +23,27 @@ Bilibili直播弹幕抽奖
 
 ## :hourglass:安装
 
-不需要安装~
+- 使用 yarn
 
-就简单地用 [mdui](https://mdui.org/) 随便写了写，所有依赖都在 [libs](libs/) 文件夹中。
+```shell
+yarn install
+```
 
-浏览器打开 [main.html](main.html) 即开即用:+1:
+- 使用 npm
+
+```shell
+npm install	
+```
+
+
 
 ## :bell:使用说明
 
-1. 输入房间号后点击 `点击开始` 按钮开始记录发送弹幕的用户 uid 和昵称，不会重复记录。
-2. 点击 `停止记录` 按钮后停止记录发送的弹幕。
-3. 点击 `随机抽奖` 按钮在刚才记录过程中所有发送弹幕的用户里面随机抽取一位。
-4. 关闭弹窗后点击中间粉色的中奖用户用户名可跳转到该用户的B站主页方便私信。
+1. 输入房间号后点击 `进入房间` 按钮开始记录发送弹幕的观众 uid 和昵称，不会重复记录。
+2. 点击 `停止记录` 按钮后停止记录弹幕。
+3. 填入需要抽取的人数(小于等于刚才记录的总人数)
+4. 点击 `随机抽奖` 按钮在刚才记录过程中所有发送弹幕的观众里面随机抽取指定数量观众。
+5. 点击中奖观众的用户名可跳转到该观众的B站主页，方便私信。
 
 ## :page_with_curl:使用许可
 
