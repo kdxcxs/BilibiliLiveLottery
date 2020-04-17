@@ -1,36 +1,36 @@
 <template>
-  <div>
-    <v-stepper-step step="1">进入直播间</v-stepper-step>
-    <v-stepper-content step="1">
-      <p class="display-1 text-center purple--text">请输入房间号</p>
-      <v-text-field
+  <transition name="el-fade-in">
+    <div v-show="stepNow===1">
+      <h1>请输入房间号</h1>
+      <el-input
               v-model="roomid"
               type="number"
-              label="房间号"
-              class="px-2"
-              outlined
-      ></v-text-field>
-      <v-btn color="primary" @click="enterRoom(roomid)">进入房间</v-btn>
-    </v-stepper-content>
-  </div>
+              placeholder="请输入房间号"
+      ></el-input>
+      <el-button type="primary"
+                 @click="enterRoom(roomid)"
+                 round>
+        进入房间
+      </el-button>
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   name: "RoomChoosing",
-  props: {
-    enterRoom: Function
-  },
   data: () => ({
-      roomid: ''
-  })
+    roomid: ''
+  }),
+  props: {
+    enterRoom: Function,
+    stepNow: Number
+  }
 }
 </script>
 
 <style rel="stylesheet" scoped>
-#enter-room-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+button {
+  margin-top: 8px;
 }
 </style>
