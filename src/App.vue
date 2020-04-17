@@ -1,28 +1,28 @@
 <template>
   <div id="page-container">
     <step :stepNow="currentStep"></step>
-          <room-choosing :enter-room="enterRoom"
-                         :step-now="currentStep"
-                         class="contents">
-          </room-choosing>
-          <recording :step-now="this.currentStep"
-                     :involved-in-total="this.involvedUid.length"
-                     :stop-rec="this.stopRecording"
+      <room-choosing :enter-room="enterRoom"
+                     :step-now="currentStep"
                      class="contents">
-          </recording>
-          <lottery :step-now="this.currentStep"
-                   :involved-in-total="this.involvedUid.length"
-                   :lucky-dogs="this.luckyDogs"
-                   :next-step="()=>{this.currentStep ++}"
-                   :append-luckier="appendUser"
-                   class="contents">
-          </lottery>
-          <result :step-now="this.currentStep"
-                  :lucky-dogs="this.luckyDogs"
-                  :uids="this.involvedUid"
-                  :unames="this.involvedUname"
-                  class="contents">
-          </result>
+      </room-choosing>
+      <recording :step-now="this.currentStep"
+                 :involved-in-total="this.involvedUid.length"
+                 :stop-rec="this.stopRecording"
+                 class="contents">
+      </recording>
+      <lottery :step-now="this.currentStep"
+               :involved-in-total="this.involvedUid.length"
+               :lucky-dogs="this.luckyDogs"
+               :next-step="()=>{this.currentStep ++}"
+               :append-luckier="appendUser"
+               class="contents">
+      </lottery>
+      <result :step-now="this.currentStep"
+              :lucky-dogs="this.luckyDogs"
+              :uids="this.involvedUid"
+              :unames="this.involvedUname"
+              class="contents">
+      </result>
   </div>
 </template>
 
