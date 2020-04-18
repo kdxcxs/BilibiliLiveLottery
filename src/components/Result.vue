@@ -1,8 +1,7 @@
 <template>
   <div>
-    <v-stepper-step :rules="[accessRule]" step="4">
+    <v-stepper-step step="4">
       开奖
-      <small>{{ stepErrorMsg }}</small>
     </v-stepper-step>
     <v-stepper-content step="4">
       <p class="display-1 text-center purple--text">中奖名单</p>
@@ -19,28 +18,15 @@
 <script>
 export default {
   name: "Result",
-  computed: {
-    stepErrorMsg: function () {
-      return this.stepNow===4 ? '' : '请先抽奖';
-    }
-  },
   methods: {
-    accessRule: function () {
-      return this.stepNow === 4;
-    },
     openUserSpace: function (uid) {
       window.open('https://space.bilibili.com/' + uid);
     }
   },
   props: {
-    stepNow: Number,
     luckyDogs: Array,
     uids: Array,
     unames: Object
   }
 }
 </script>
-
-<style scoped>
-
-</style>

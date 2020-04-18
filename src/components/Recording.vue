@@ -1,8 +1,7 @@
 <template>
   <div>
-    <v-stepper-step step="2" :rules="[accessRule]">
+    <v-stepper-step step="2">
       记录参与观众
-      <small>{{ stepErrorMsg }}</small>
     </v-stepper-step>
     <v-stepper-content step="2">
       <p class="display-1 text-center purple--text">当前已有</p>
@@ -17,25 +16,9 @@
 <script>
   export default {
     name: "Recording",
-    computed: {
-      stepErrorMsg: function () {
-        return this.stepNow === 1?'请先进入房间':'';
-      }
-    },
-    methods: {
-      accessRule: function () {
-        return this.stepNow !== 1;
-      }
-    },
     props: {
-      stepNow: Number,
-      recording: Boolean,
       involvedInTotal: Number,
       stopRec: Function
     }
   }
 </script>
-
-<style scoped>
-
-</style>

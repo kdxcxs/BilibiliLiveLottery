@@ -8,23 +8,18 @@
               dark>
         BiliBili直播弹幕抽奖
       </v-app-bar>
-<!--        <img src="./assets/bilibili.png" alt="bili-logo" id="bili-logo">-->
       <v-content>
         <v-stepper v-model="currentStep" vertical>
           <room-choosing :enter-room="enterRoom"></room-choosing>
-          <recording :step-now="this.currentStep"
-                     :recording="this.recording"
-                     :involved-in-total="this.involvedUid.length"
+          <recording :involved-in-total="this.involvedUid.length"
                      :stop-rec="this.stopRecording">
           </recording>
           <lottery :step-now="this.currentStep"
-                   :involved-in-total="this.involvedUid.length"
                    :uids="this.involvedUid"
                    :lucky-dogs="this.luckyDogs"
                    :next-step="()=>{this.currentStep ++}">
           </lottery>
-          <result :step-now="this.currentStep"
-                  :lucky-dogs="this.luckyDogs"
+          <result :lucky-dogs="this.luckyDogs"
                   :uids="this.involvedUid"
                   :unames="this.involvedUname">
           </result>
@@ -79,25 +74,3 @@ export default {
   }
 }
 </script>
-
-<style rel="stylesheet/sass" lang="scss">
-#bili-logo {
-  bottom: 0;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 1024px) {
-  #bili-logo {
-    width: 350px;
-  }
-}
-
-@media (max-width: 1023px) {
-  #bili-logo {
-    width: 80%;
-  }
-}
-
-</style>

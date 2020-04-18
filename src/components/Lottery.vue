@@ -11,9 +11,8 @@
       </v-card>
     </v-dialog>
 
-    <v-stepper-step :rules="[accessRule]" step="3">
+    <v-stepper-step step="3">
       抽奖
-      <small>{{ stepErrorMsg }}</small>
     </v-stepper-step>
     <v-stepper-content step="3">
       <p class="display-1 text-center purple--text">请选择人抽取人数</p>
@@ -36,25 +35,11 @@
       goal: 1
     }),
     computed: {
-      stepErrorMsg: function () {
-        if (this.stepNow === 1) {
-          return '请先进入房间';
-        }
-        else if (this.stepNow===2 && this.involvedInTotal===0) {
-          return '请等待至少一位用户参与';
-        }
-        else {
-          return '';
-        }
-      },
       goalLegal: function () {
-        return this.stepNow===3 && this.goal>=this.uids.length
+        return this.stepNow===3 && this.goal>=this.uids.length;
       }
     },
     methods: {
-      accessRule: function () {
-        return this.stepNow>=2 && this.involvedInTotal!==0;
-      },
       randomNum: function (minNum, maxNum) {
         // https://www.cnblogs.com/starof/p/4988516.html
         switch (arguments.length) {
@@ -83,14 +68,9 @@
     },
     props: {
       stepNow: Number,
-      involvedInTotal: Number,
       uids: Array,
       luckyDogs: Array,
       nextStep: Function
     }
   }
 </script>
-
-<style scoped>
-
-</style>

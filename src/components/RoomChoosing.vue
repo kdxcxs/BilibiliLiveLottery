@@ -26,11 +26,3 @@ export default {
   })
 }
 </script>
-
-<style rel="stylesheet" scoped>
-#enter-room-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
