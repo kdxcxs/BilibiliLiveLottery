@@ -68,13 +68,13 @@ export default {
       this.luckyDogs.push(luckyIndex);
     },
     onDanmu: function (userInfo) {
-      if (this.recording && !this.involvedUid.includes(userInfo[2][0])){
+      if (this.recording && !this.involvedUid.includes(userInfo[0])){
         if (!this.inRoom) {
           this.inRoom = true;
           this.loadingInstance.close();
         }
-        this.involvedUid.push(userInfo[2][0].toString());
-        this.involvedUname[userInfo[2][0]] = userInfo[2][1];
+        this.involvedUid.push(userInfo[0].toString());
+        this.involvedUname[userInfo[0]] = userInfo[1];
       }
     },
     connectWs: function () {
