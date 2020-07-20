@@ -30,42 +30,54 @@
 </template>
 
 <script>
-document.title = 'BiliBili直播弹幕抽奖'
+document.title = 'BiliBili直播弹幕抽奖';
 
 import connect from "./websocketClient/BiliLiveWs";
+import Step from "./components/Step";
 import RoomChoosing from "./components/RoomChoosing";
 import Recording from "./components/Recording";
 import Lottery from "./components/Lottery";
 import Result from "./components/Result";
+import { Loading } from 'element-ui';
 
 export default {
   name: 'App',
-  components: {Result, Lottery, Recording, RoomChoosing },
+  components: { Step, RoomChoosing, Recording, Lottery, Result },
   data: () => ({
     currentStep: 1,
     roomid: 0,
+    inRoom: false,
     recording: false,
     involvedUid: [], // 所有参与用户的uid
     involvedUname: {}, // 所有参与用户的用户名
-    luckyDogs: []
+    luckyDogs: [],
+    loadingInstance: Object
   }),
   methods: {
     enterRoom: function (rid) {
-      this.involvedUid = [];
-      this.involvedUname = {};
       this.recording = true;
       this.roomid = parseInt(rid);
       this.connectWs();
       this.currentStep ++;
+      this.loadingInstance = Loading.service({target: 'html',
+                                                       text: '正在进入直播间'
+      });
     },
     stopRecording: function () {
       this.recording = false;
       this.currentStep ++;
     },
+    appendUser: function (luckyIndex) {
+      this.luckyDogs.push(luckyIndex);
+    },
     onDanmu: function (userInfo) {
-      if (this.recording && !this.involvedUid.includes(userInfo[2][0])){
-        this.involvedUid.push(userInfo[2][0].toString());
-        this.involvedUname[userInfo[2][0]] = userInfo[2][1];
+      if (this.recording && !this.involvedUid.includes(userInfo[0])){
+        if (!this.inRoom) {
+          this.inRoom = true;
+          this.loadingInstance.close();
+        }
+        this.involvedUid.push(userInfo[0].toString());
+        this.involvedUname[userInfo[0]] = userInfo[1];
       }
     },
     connectWs: function () {
